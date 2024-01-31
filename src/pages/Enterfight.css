@@ -1,0 +1,51 @@
+.formSpace {
+    flex-basis: 45vh;
+    flex-grow: 0;
+    flex-shrink: 1;
+    display: flex;
+    min-height: 45vh;
+
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--main-tile);
+    border: 1px solid var(--bordertile);
+    border-radius: 8px;
+    padding: 50px;
+
+}
+
+.bodypage {
+    min-height: 100vh;
+}
+
+.form-text {
+    text-align: left;
+}
+.form-control {
+    width: 25vh;
+
+}
+
+.invalid-feedback {
+    color: red;
+}
+
+::placeholder {
+    padding-left: 2px;
+    color: silver;
+    font-size: small;
+}
+
+.span-button {
+    min-width: initial;
+}
+
+.button-delete {
+    background-color: var(--signal);
+    margin: 0 2px 0 2px;
+}
+
+.button-add {
+    background-color: var(--button-go);
+    align-self: flex-start;
+}

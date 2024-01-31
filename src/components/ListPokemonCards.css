@@ -1,0 +1,13 @@
+.list-type {
+    flex-direction: row;
+}
+
+.list-type li {
+    margin: 0;
+    padding: 0;
+}
+
+.li {
+    background-color: gold;
+}
+
