@@ -3,6 +3,7 @@ import {useParams, useNavigate} from "react-router-dom";
 import {enterFight, getPokemonPlayById, listPokemon, nextRound, updatePokemonPlay} from "../services/PokemonService";
 import './Enterfight.css';
 import SelectPokemonCard from "../components/SelectPokemonCard";
+import fightResultLines from "../helpers/fightResultLines";
 
 function Enterfight() {
 
@@ -18,18 +19,18 @@ function Enterfight() {
     const [cardP, setCardP] = useState("");
     const [cardG, setCardG] = useState("");
     const [fightResults, setFightResults] = useState([]);
-    const attacks = ["","leafStorm", "solarBeam", "fireLash", "leechSeed", "leaveBlade", "inferno", "pyroBall", "fireLash", "flameThrower", "thunderPunch", "electroBall", "thunder", "voltTackle", "surf", "hydroPump", "hydroCanon", "rainDance"];
+    const attacks = ["leafStorm", "solarBeam", "fireLash", "leechSeed", "leaveBlade", "inferno", "pyroBall", "fireLash", "flameThrower", "thunderPunch", "electroBall", "thunder", "voltTackle", "surf", "hydroPump", "hydroCanon", "rainDance"];
 
     const {id} = useParams();
     const navigator = useNavigate();
- //   console.log('id', id);
+    //   console.log('id', id);
 
     useEffect(() => {
 
         if (id && !initialised) {
             setInitialised(true);
             getPokemonPlayById(id).then((response) => {
-                console.log(response.data);
+            //    console.log(response.data);
 
                 setPokemonPlay({...response.data})
 
@@ -66,7 +67,8 @@ function Enterfight() {
         const updatedPokemonplay = {...pokemonplay}
         enterFight(id, updatedPokemonplay).then((response) => {
             // console.log(response.data);
-            setFightResults(response.data.textlines);
+            const results = fightResultLines(response.data.textlines,updatedPokemonplay);
+            setFightResults(results);
             navigator(`/pokemonplay/enterfight/${id}`);
 
         }).catch(error => {
@@ -85,8 +87,9 @@ function Enterfight() {
             case "yes":
 
                 enterFight(id, updatedPokemonplay).then((response) => {
-           //         console.log(response.data);
-                    setFightResults(response.data.textlines);
+                    //         console.log(response.data);
+                    const results = fightResultLines(response.data.textlines, updatedPokemonplay);
+                    setFightResults(results);
                     navigator(`/pokemoncards/${pokemonPlay.namePlayerA}`);
                 }).catch(error => {
                     console.error(error);
@@ -101,8 +104,9 @@ function Enterfight() {
                 break;
             case "a":
                 nextRound(answer, updatedPokemonplay).then((response) => {
-             //       console.log(response.data);
-                    setFightResults(response.data.textlines);
+                    //       console.log(response.data);
+                    const results = fightResultLines(response.data.textlines, updatedPokemonplay);
+                    setFightResults(results);
                     navigator(`/pokemonplay/nextround/${answer}/${id}`);
 
                 }).catch(error => {
@@ -130,14 +134,17 @@ function Enterfight() {
                 if (found) {
                     nextRound(answer.toLowerCase(), updatedPokemonplay).then((response) => {
                         // console.log(response.data);
-                        setFightResults(response.data.textlines);
+
+                        const results = fightResultLines(response.data.textlines, updatedPokemonplay);
+                        setFightResults(results);
                         navigator(`/pokemonplay/nextround/${id}`);
 
                     }).catch(error => {
                         console.error(error);
                     })
                 } else {
-                    console.log('no answer')}
+                    console.log('no answer')
+                }
                 setAnswer('');
         }
     }
@@ -148,7 +155,7 @@ function Enterfight() {
 
             {pokemonPlay && initialised &&
                 <div className="inner-container bodypage">
-                    <h2>Enter fight for {id}</h2>
+                    <h2>Enter fight for {pokemonPlay.namePlayerA}</h2>
                     <form className="formSpace">
                         <legend>
                             <div className="row">
@@ -213,12 +220,19 @@ function Enterfight() {
                     </form>
                     <div>
                         <span> Fight results: {initialised} </span>
-                        <ul className="column">
+                        <ul className="results">
                             {fightResults && fightResults.length > 0 &&
                                 fightResults.map((lineItem, index) => {
+                                    const string = pokemonPlay.cardGymOwner;
+                                    let aligntext = "form-text-left";
+                                    if (lineItem.substring(0, 16).includes(pokemonPlay.nameGymOwner) || lineItem.substring(0, 15).includes(pokemonPlay.cardGymOwner)) {
+                                        aligntext = "form-text-right";
+                                    }
+
                                     return (
                                         <>
-                                            <li className="form-text" key={index}>
+
+                                            <li className={aligntext} key={index}>
                                                    <span>
                                                        {lineItem} </span>
                                             </li>

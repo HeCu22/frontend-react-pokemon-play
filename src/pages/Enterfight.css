@@ -18,8 +18,25 @@
     min-height: 100vh;
 }
 
-.form-text {
+.results {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+
+.form-text-left {
+    min-width: 50vh;
+    display: flex;
     text-align: left;
+    flex-direction: row;
+}
+
+.form-text-right {
+    min-width: 50vh;
+    text-align: left;
+    display: flex;
+     flex-direction: row-reverse;
 }
 .form-control {
     width: 25vh;

@@ -24,7 +24,7 @@ function PlayPokemon() {
 
     const words = name.split(',');
 
-    console.log('words', words);
+    // console.log('words', words);
 
 
     useEffect(() => {
@@ -46,7 +46,7 @@ function PlayPokemon() {
 
 
                 enterPokemonCard(words[0]).then((responseCard) => {
-                    console.log('enter pokemon card', responseCard.data);
+                    // console.log('enter pokemon card', responseCard.data);
                     const cardNames = responseCard.data.map(({name}) => name);
                     if (words[1] > "") {
                         setPokemonPlay(
@@ -59,7 +59,7 @@ function PlayPokemon() {
                             },
                         )
                     }
-                    console.log('mapresult', cardNames);
+                    // console.log('mapresult', cardNames);
 
                     setPokemons(cardNames);
 
@@ -87,7 +87,7 @@ function PlayPokemon() {
         e.preventDefault();
         const updatedPokemonplay = {...pokemonPlay}
         updatePokemonPlay(words[0], updatedPokemonplay).then((response) => {
-            console.log('updated play', response.data);
+           // console.log('updated play', response.data);
             const id = response.data.id;
             navigator(`/pokemonplay/enterfight/${id}`);
 
@@ -101,7 +101,7 @@ function PlayPokemon() {
         const value =
             evt.target.type === "checkbox" ? evt.target.checked : evt.target.value;
         setPokemonPlay({...pokemonPlay, [evt.target.name]: value});
-        console.log('new value', value, evt.target.name, evt.target.value, evt.target.checked);
+     //   console.log('new value', value, evt.target.name, evt.target.value, evt.target.checked);
     }
 
 
