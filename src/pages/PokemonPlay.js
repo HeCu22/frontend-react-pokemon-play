@@ -10,7 +10,7 @@ function PokemonPlay() {
         cardPlayerA: '',
         nameGymOwner: 'Pewter City',
         cardGymOwner: '',
-        usedCard: ''
+        usedPokemon: ''
     })
     const navigator = useNavigate();
 

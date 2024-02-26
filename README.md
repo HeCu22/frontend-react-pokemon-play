@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# Applicatie-beschrijving
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Inleiding
+Via Novi Frontend React cursus kwam ik tot de ontdekking dat er een Poké API bestaat waarmee je Pokémon data mee kunt ophalen! 
+Er is ook een Novi Backend Java cursus opdracht via welke je een Pokémon spel kunt spelen.
+Ik besloot een applicatie te bouwen waarmee je een selectie Pokémons kunt bekijken, en vervolgens een Pokémonspel kunt spelen.
 
-## Available Scripts
+Het frontend gedeelte van het project is opgezet met [Create React App](https://github.com/facebook/create-react-app).
 
-In the project directory, you can run:
+## Eindresultaat
+Focus van deze opdracht is niet styling, maar (beperke) functionaliteit. Maar omdat iedereen blij wordt van leuke kleurtjes, is het voorbeeld toch voorzien van styling:
 
-### `npm start`
+## De applicatie starten
+Als je het project gecloned hebt naar jouw locale machine, installeer je eerst de node_modules door het volgende commando in de terminal te runnen:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+`npm install`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Wanneer dit klaar is, kun je de applicatie starten met behulp van:
 
-### `npm test`
+`npm start`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+of gebruik de WebStorm knop (npm start). Open http://localhost:3000 om de pagina in de browser te bekijken.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Applicatiebeschrijving
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Een speler kan via deze frontend-react applicatie een spel kan spelen. 
+Degenen die bekend zijn met Pokémon weten dat deze altijd een _type_ hebben (sterker nog: Pokémon kunnen meerdere types tegelijk zijn, maar om het niet te moeilijk
+te maken, maken we gebruik van één type per Pokémon). Voorbeelden van deze typen zijn: Fire 🔥, Water 🌊, Grass 🌿 en
+Electric ⚡. 
+Daarnaast is er een gym owner genaamd 'Pewter City'  in de stad 'Brock' en een trainer/speler, zodat de applicatie interactief kan worden.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+De speler meldt zich aan met zijn naam en wordt uitgenodigd een Pokémon spel te spelen.
+Vervolgens krijgt hij zes Pokémon kaarten te zien met daarop o.a. de naam, afbeelding, het type, het level (nivo), het gewicht (hp), voedsel, en stemgeluid en kan de speler het spel starten.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![](src/assets/img.png)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Op de vervolgpagina presenteert de gymowner zich met een kaart en mag de speler ook een Pokémon kaart kiezen.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Het derde scherm toont beide gekozen kaarten bovenaan en dan kan het spel starten, 
+* waarbij de gymowner eerst een aanval doet en daarna de speler. Het resultaat verschijnt in de regels onder de pagina.
+* Vervolgens mag de speler kiezen of hij gaat aanvallen of zijn kaart wil wijzigen.
+* Als hij aanvalt dan krijgt hij eerst vier mogelijke aanval-tactieken te zien en kan hij hieruit kiezen.
+* Als hij wijzigt, gaat hij een scherm terug om een andere Pokémon kaart te kiezen.
+* Nadat de speler een aanval heeft gedaan, is het de beurt van de gymowner om een vervolgaanval te doen.
+* Als een van de twee geen hp meer heeft, dan wordt de winnaar bekend gemaakt en krijgt de speler de keuze om nog eens te spelen of te stoppen.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## Randvoorwaarden
+Extra specifieke Pokémon data zoals een afbeelding wordt opgehaald via de Poké API en deze wordt weergeven in de betreffende Pokémon kaart op het scherm van de Application.
+Hier heb je geen API key voor nodig!
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Bekijk de documentatie van de Poké API [hier](https://pokeapi.co/).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Als je het spel wil spelen moet je tevens de backend hiervoor eerst opstarten. Hierin wordt gebruik gemaakt van een SQL database (PostgresQL) die via de backend wordt geactiveert.
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* Elk pokémon kaartje bevat een _naam_, een afbeelding, lijst van _abilities_, _gewicht_, en de hoeveelheid _moves_.
+* Elk spel wordt vastgelegd door een record toe te voegen aan de SQL database, die benaderbaar is via API calls naar "http://localhost:8080/api/pokemonplay".
+* Telkens als er een keuze is gemaakt voor een kaart wordt dit vastglegd in de database, via een update van het record.
+* Het record bevat de namen van de speler en de gymner en de kaarten waarmee ze spelen.
+* Voor elk Pokémon spel worden een of meerder textlijnen door de backend aangemaakt in de database, die ingelezen kunnen worden om de resultaten te laten zien.
+* 
+* 

@@ -2,12 +2,10 @@ import React, {useEffect, useState} from 'react';
 import './SelectPokemonCard.css';
 
 
-function SelectPokemoncard({children, clickHandler, fieldClass, cardPlayer, pokemoncards}) {
+function SelectPokemoncard({children, clickHandler, fieldClass, pokemoncards}) {
     const [toRead, setToRead] = useState(true);
     const [pokemons, setPokemons] = useState([{}]);
     let pokemonSave = [{}];
-
-    //   console.log('pokemons to select', pokemoncards)
 
     useEffect(() => {
 
@@ -25,7 +23,6 @@ function SelectPokemoncard({children, clickHandler, fieldClass, cardPlayer, poke
     return (
 
         <ul>
-            {console.log(pokemons)}
             <select
 
                 id="select-card"

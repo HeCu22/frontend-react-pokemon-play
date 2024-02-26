@@ -1,10 +1,11 @@
 import axios from "axios";
+import pokemonPlay from "../pages/PokemonPlay";
 
 const REST_API_BASE_URL_CARDS = 'https://pokeapi.co/api/v2/pokemon';
 
 const REST_API_BASE_URL = "http://localhost:8080/api/pokemonplay";
 
-console.log('pokemon')
+
 
 export const listPokemon = (pokemonName) =>  axios.get(REST_API_BASE_URL_CARDS  + '/' + pokemonName.toLowerCase());
 
@@ -17,5 +18,6 @@ export const getPokemonPlayById = (pokemonPlayId) => axios.get(REST_API_BASE_URL
 export const getPokemonPlayByName = (namePlayerA) => axios.get(REST_API_BASE_URL + '/' + namePlayerA);
 
 export const enterPokemonCard = (namePlayerA) => axios.get(REST_API_BASE_URL + '/entercard/' + namePlayerA);
-export const enterFight = (id, pokemonplay) => axios.put(REST_API_BASE_URL + '/enterfight/' + id, pokemonplay);
+export const enterFightRound = (id, pokemonplay) => axios.put(REST_API_BASE_URL + '/enterfight/' + id, pokemonplay);
 export const nextRound = (answer, pokemonplay) => axios.put(REST_API_BASE_URL + "/nextround/" + answer, pokemonplay);
+export const getFightResults = (id) => axios.get(REST_API_BASE_URL + "/textlines/textlines");

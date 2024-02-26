@@ -1,12 +1,11 @@
 function FightResultLines(textlines, updatedPokemonplay) {
     let linenumber = 0;
     const results = [];
+    if (textlines.length < 1) {return results};
 
     for (let i = 0; i < textlines.length; i++) {
         const string = textlines[i].substring(0, 15);
-        console.log('string', string, linenumber);
         if (string.includes(updatedPokemonplay.namePlayerA) || string.includes(updatedPokemonplay.cardPlayerA)) {
-            //  console.log('string', string, updatedPokemonplay.namePlayerA, linenumber);
             if (linenumber % 2 > 0) {
                 results[linenumber] = "";
                 linenumber++;
@@ -17,7 +16,6 @@ function FightResultLines(textlines, updatedPokemonplay) {
                     results[linenumber] = "";
                     linenumber++;
                 }
-
             }
         }
 
@@ -25,7 +23,6 @@ function FightResultLines(textlines, updatedPokemonplay) {
         linenumber++;
 
     }
-    console.log('results', results);
     return results;
 }
 

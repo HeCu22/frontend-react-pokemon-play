@@ -99,20 +99,23 @@ function ListPokemonCards({pokemoncards, setPokemoncards}) {
                 if (found) {
 
                     listPokemon(dummyData[i].name).then((response) => {
-                        if (foundA) {
-                       //     console.log('ik heb pokemensSave gevuld voor index', i, response.data);
+                        if (found) {
+                         //   console.log('ik heb pokemensSave gevuld voor index', i, pokemoncards[i]);
                             setGelezen(i);
+                            const pokemoncard = pokemoncards[i];
                             pokemonSave[i] = ({
                                 id: dummyData[i].id,
                                 name: dummyData[i].name,
                                 url: response.data.sprites.front_default,
                                 types: response.data.types,
                                 level: dummyData[i].level,
-                                weight: dummyData[i].weight,
+                                weight: pokemoncard[0].hp,
                                 food: dummyData[i].food,
                                 sound: dummyData[i].sound
 
+
                             });
+                         //   console.log('ik heb pokemensSave gevuld voor index', i, pokemonSave[i]);
                         } else {
                             setGelezen(i);
                             pokemonSave[i] = ({
@@ -125,7 +128,6 @@ function ListPokemonCards({pokemoncards, setPokemoncards}) {
                 }
             }
             if (pokemonSave) {
-             //   console.log('saved', pokemonSave);
                 setToRead(false);
                 setPokemons(pokemonSave);
             }
@@ -143,7 +145,7 @@ function ListPokemonCards({pokemoncards, setPokemoncards}) {
     return (
         <div className="outer-container">
             <div className="inner-container">
-                {/*{console.log('returned', pokemons, pokemons.length, Object.keys(pokemons).length, gelezen)}*/}
+
                 <ul className="list-type">
                     {pokemons && pokemons.length === Object.keys(pokemons).length && gelezen > 0 &&
                         pokemons.map((pokemon, index) => {
@@ -158,7 +160,7 @@ function ListPokemonCards({pokemoncards, setPokemoncards}) {
                                         <p><strong>Types:</strong></p>
                                         <ul className="list-type">
                                             {pokemon.types.map((item) => {
-                                                // {console.log('Ik ben map gerenderd')}
+
                                                 return <li key={item.type.url}>
                                                     <span>{item.type.name}</span>
                                                 </li>

@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {useNavigate, useParams} from "react-router-dom";
-import {enterPokemonPlay, listPokemon} from "../services/PokemonService";
 import ListPokemonCards from "../components/ListPokemonCards";
 import './ListCards.css';
 
@@ -9,7 +8,7 @@ function ListCards() {
     const pokemoncards = ["Charizard", "Blastoise", "Venusaur", "Ditto", "Raichu", "Gyarados"];
     const [pokemons, setPokemons] = useState([]);
     const [toList, setToList] = useState(true);
-    const [play, setPlay] = useState( "")
+    const [play, setPlay] = useState("")
 
     const {name} = useParams();
 
@@ -24,7 +23,7 @@ function ListCards() {
             setToList(false)
 
         }
-    }, [toList, pokemons]);
+    }, [toList]);
 
 
     function enterGame(e) {
@@ -37,7 +36,6 @@ function ListCards() {
 
     return (
         <>
-
 
 
             <form className="formSpaceSmall">
@@ -63,12 +61,16 @@ function ListCards() {
                 </legend>
 
             </form>
-            <h3>To start your game, we have given you 6 Pokemons to use. These are the Pokemons you get:</h3>
-            <ListPokemonCards
-                pokemoncards={pokemons}
-                setPokemoncards={setPokemons}
+            {toList &&
+                <>
+                    <h3>To start your game, we have given you 6 Pokemons to use. These are the Pokemons you get:</h3>
+                    <ListPokemonCards
+                        pokemoncards={pokemons}
+                        setPokemoncards={setPokemons}
 
-            />
+                    />
+                </>
+            }
         </>
     )
 

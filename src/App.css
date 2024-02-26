@@ -91,13 +91,12 @@ ul {
     justify-content: space-evenly;
     flex-wrap: wrap;
 
+
 }
 
 li {
-    background-color: #EDEDED; /* cultured */
-    border-radius: 10px;
-    margin: 4px;
-    padding: 4px;
+    background-color: var(--eggshell);
+    padding: 0 4px 0 4px;
 }
 
 /* ------------------------------- Reusables -------------------------------- */
